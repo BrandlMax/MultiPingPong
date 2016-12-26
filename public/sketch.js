@@ -35,7 +35,7 @@ function setup() {
     // LOCAL NETWORK
     //TRANSFER.connectToServer("http://192.168.0.105:1337");
     // LOCAL MACHINE
-    TRANSFER.connectToServer("http://pongmultiplayer.herokuapp.com");
+    TRANSFER.connectToServer("https://pongmultiplayer.herokuapp.com/");
 
     // FRAMERATE
     smooth();
