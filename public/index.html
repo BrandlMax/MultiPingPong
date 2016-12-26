@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Node</title>
+
+    <!-- p5.js-->
+    <script src="libraries/p5.js" type="text/javascript"></script>
+    <script src="libraries/p5.dom.js" type="text/javascript"></script>
+    <script src="libraries/p5.sound.js" type="text/javascript"></script>
+
+    <!-- socket.io-->
+    <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+
+    <!-- Sketch-->
+    <script src="objects/transfer.js" type="text/javascript"></script>
+    <script src="objects/level.js" type="text/javascript"></script>
+    <script src="objects/ball.js" type="text/javascript"></script>
+    <script src="objects/player.js" type="text/javascript"></script>
+    <script src="sketch.js" type="text/javascript"></script>
+
+    <!-- Style -->    
+    <style> body {padding: 0; margin: 0;} canvas {vertical-align: top;} </style>
+     <link rel="stylesheet" href="style/style.css">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+
+  </head>
+  <body>
+
+    <div id="EnterRoomOverlay" class="overlay">
+      <div id="EnterRoomOverlayWindow" class="window">
+        <p>ENTER ROOM ID</p>
+        <!-- P5 ELEMENTS -->
+      </div>
+    </div>
+
+
+    <div id="WaitingOverlay" class="hide">
+      <div id="WaitingOverlayWindow" class="window">
+        <p>Waiting for Player...</p>
+      </div>
+    </div>
+
+    <div id="WinnerOverlay" class="hide">
+      <div id="WinnerOverlayWindow" class="window">
+        <p>You Win :)</p>
+      </div>
+    </div>
+
+
+    <div id="LoserOverlay" class="hide">
+      <div id="LoserOverlayWindow" class="window">
+        <p>You Lose :(</p>
+      </div>
+    </div>
+
+
+    <div id="stage">
+
+    </div>
+  </body>
+</html>
