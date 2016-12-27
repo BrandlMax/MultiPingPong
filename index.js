@@ -28,16 +28,6 @@ var io = socket(server);
 // RUN FUNCTION ON NEW CONNECTION
 io.sockets.on('connection', newConnection);
 
-
-// UPDATE DATA
-function updateGame(data){
-
-        // console.log("UpdateGameData");
-
-        // SEND DATA
-        io.sockets.in(data.room).emit('GameData', data);
-}
-
 // CONNECTION
 // RUN BY NEW CONNECTION
 function newConnection(socket){
@@ -101,8 +91,14 @@ function newConnection(socket){
     // NEW USER
     console.log('newUser ' + socket.id);
 
-    // GET DATA FROM CLIENT
-    socket.on('GameData', updateGame);
+    // GET DATA FROM CLIENT & SEND IT TO CLIENTS
+    socket.on('GameData', function(data){
+        socket.broadcast.to(data.room).emit('GameData', data);
+    });
+
+    socket.on('GameDataP2',function(data){
+        socket.broadcast.to(data.room).emit('GameDataP2', data);
+    });
 
 }
 

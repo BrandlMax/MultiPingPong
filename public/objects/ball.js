@@ -33,15 +33,15 @@ function Ball(){
 
     this.speedUp = function(){
         if(GAMEDATA.ball.speedX < 0){
-            GAMEDATA.ball.speedX = GAMEDATA.ball.speedX - 0.2;
+            GAMEDATA.ball.speedX = GAMEDATA.ball.speedX - 0.5;
         }else{
-            GAMEDATA.ball.speedX = GAMEDATA.ball.speedX + 0.2;
+            GAMEDATA.ball.speedX = GAMEDATA.ball.speedX + 0.5;
         }
 
         if(GAMEDATA.ball.speedY < 0){
-            GAMEDATA.ball.speedY = GAMEDATA.ball.speedY - 0.2;
+            GAMEDATA.ball.speedY = GAMEDATA.ball.speedY - 0.5;
         }else{
-            GAMEDATA.ball.speedY = GAMEDATA.ball.speedY + 0.2;
+            GAMEDATA.ball.speedY = GAMEDATA.ball.speedY + 0.5;
         }
     }
 
@@ -57,10 +57,10 @@ function Ball(){
         var p1h = GAMEDATA.player1.h;
         var p1w = GAMEDATA.player1.w;
 
-        var p2x = GAMEDATA.player2.x;
-        var p2y = GAMEDATA.player2.y;
-        var p2h = GAMEDATA.player2.h;
-        var p2w = GAMEDATA.player2.w;
+        var p2x = GAMEDATAP2.player2.x;
+        var p2y = GAMEDATAP2.player2.y;
+        var p2h = GAMEDATAP2.player2.h;
+        var p2w = GAMEDATAP2.player2.w;
 
         // DIRECTION CHANGE
         function verticalCol(){

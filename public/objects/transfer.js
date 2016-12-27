@@ -13,6 +13,8 @@ function Transfer(){
     this.socket;
     this.room;
     this.serverGAMEDATA;
+    this.serverGAMEDATAP2;
+
 
     // 1. CONNECT
     this.connectToServer = function(url){    
@@ -20,26 +22,40 @@ function Transfer(){
         this.socket = io.connect(url);
     }
 
+
     // 2. SET ROOM
     this.enterRoom = function(){
         this.socket.emit('room', this.room);
     }
 
+
     // 3. SEND GAME DATA
     this.sendDataToServer = function(GAMEDATA){
         // SEND DATA TO SERVER
-        this.socket.emit('GameData', GAMEDATA);
+            this.socket.emit('GameData', GAMEDATA);
     }
+
+    this.sendDataToServerP2 = function(GAMEDATAP2){
+        // SEND DATA TO SERVER
+            this.socket.emit('GameDataP2', GAMEDATAP2);
+    }
+
 
     // 4. GET GAME DATA
     this.updateFromServer = function(serverGAMEDATA){
         // GET DATA FROM SERVER AND UPDATE
         this.serverGAMEDATA = serverGAMEDATA;
         GAMEDATA = serverGAMEDATA;
-        // console.log(serverGAMEDATA);
        
     }
 
+    this.updateFromServerP2 = function(serverGAMEDATAP2){
+        this.serverGAMEDATAP2 = serverGAMEDATAP2;
+        GAMEDATAP2 = serverGAMEDATAP2;
+    }
+
+
+    // ROOM SETTINGS
     this.updateRoomSettings = function(serverROOMSETTINGS){
 
         ROOMSETTINGS = serverROOMSETTINGS;
@@ -59,6 +75,14 @@ function Transfer(){
         var error = createDiv(data);
         error.addClass("error");
         error.parent("EnterRoomOverlayWindow");
+    }
+
+
+    // AUTOPILOT
+
+    this.autopilot = function(){
+        GAMEDATAP2.player2.y = GAMEDATA.ball.y;
+        //console.log(GAMEDATA.ball.y +  " : " + GAMEDATAP2.player2.y);
     }
 
     

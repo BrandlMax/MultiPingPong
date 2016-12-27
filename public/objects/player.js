@@ -21,10 +21,10 @@ function Player(count){
 
     this.player2 = function(){
 
-        var x = GAMEDATA.player2.x;
-        var y = GAMEDATA.player2.y;
-        var w = GAMEDATA.player2.w;
-        var h = GAMEDATA.player2.h;
+        var x = GAMEDATAP2.player2.x;
+        var y = GAMEDATAP2.player2.y;
+        var w = GAMEDATAP2.player2.w;
+        var h = GAMEDATAP2.player2.h;
 
         // BLOCKER
         if(y < h/2){

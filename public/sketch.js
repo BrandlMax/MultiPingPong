@@ -9,6 +9,7 @@ var PLAYER2;
 
 // INIT GAMEDATA
 var GAMEDATA;
+var GAMEDATAP2;
 var GAMESETTINGS;
 var PLAYERID = 0;
 
@@ -33,7 +34,9 @@ function setup() {
 
     // CONNECT TO SERVER
     // LOCAL NETWORK
-    //TRANSFER.connectToServer("http://192.168.0.105:1337");
+    // TRANSFER.connectToServer("http://192.168.0.105:1337");
+    // TRANSFER.connectToServer("http://192.168.0.140:1337");
+    
     // LOCAL MACHINE
     TRANSFER.connectToServer("https://pongmultiplayer.herokuapp.com/");
 
@@ -48,6 +51,7 @@ function setup() {
 
 
     // SETUP GAMEDATA
+    // HOST
     GAMEDATA = {
         room: 0,
         gamestate: 0,
@@ -61,19 +65,23 @@ function setup() {
             h: 70
         },
 
-        player2: {
-            x: 610,
-            y: 165,
-            w: 10,
-            h: 70
-        },
-
         ball:{
             x: 320,
             y: 200,
             size: 15,
             speedX: 3,
             speedY: 3
+        }
+    }
+
+    // GAMEDATA P2
+    GAMEDATAP2 = {
+        room: 0,
+        player2: {
+            x: 610,
+            y: 165,
+            w: 10,
+            h: 70
         }
     }
 
@@ -95,6 +103,9 @@ function setup() {
     TRANSFER.socket.on('RoomSettings', TRANSFER.updateRoomSettings);
     TRANSFER.socket.on('RoomFull', TRANSFER.RoomFull);
 
+    // FOR PLAYER 2
+    TRANSFER.socket.on('GameDataP2', TRANSFER.updateFromServerP2);
+
 
     //INTERFACE
     LEVEL.overlay();
@@ -112,6 +123,7 @@ function setRoom(){
     var room = RoomInput.value();
     TRANSFER.room = room;
     GAMEDATA.room = TRANSFER.room;
+    GAMEDATAP2.room = TRANSFER.room;
     TRANSFER.enterRoom();
 }
 
@@ -124,7 +136,7 @@ function mouseMoved(){
     }
 
     if(PLAYERID === 2){
-        GAMEDATA.player2.y = mouseY;
+        GAMEDATAP2.player2.y = mouseY;
     }
 }
 
@@ -139,7 +151,7 @@ function touchMoved() {
     }
 
     if(PLAYERID === 2){
-        GAMEDATA.player2.y = mouseY;
+        GAMEDATAP2.player2.y = mouseY;
     }
 }
 
@@ -156,12 +168,25 @@ function draw() {
 
     // BALL
     BALL.ball();
-    BALL.move();
+
+    if(PLAYERID === 1){
+        BALL.move();
+    }
+    
+
+
+    //AUTOPILOT
+    TRANSFER.autopilot();
 
     // PLAYER
     PLAYER1.player1();
     PLAYER2.player2();
 
     // UPDATE
-    TRANSFER.sendDataToServer(GAMEDATA);
+    if(PLAYERID === 1){
+        TRANSFER.sendDataToServer(GAMEDATA);
+    }else{
+         TRANSFER.sendDataToServerP2(GAMEDATAP2);
+    }
+    
 }
