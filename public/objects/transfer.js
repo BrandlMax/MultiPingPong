@@ -81,8 +81,10 @@ function Transfer(){
     // AUTOPILOT
 
     this.autopilot = function(){
+        if(PLAYERID === 2){
         GAMEDATAP2.player2.y = GAMEDATA.ball.y;
         //console.log(GAMEDATA.ball.y +  " : " + GAMEDATAP2.player2.y);
+        }
     }
 
     

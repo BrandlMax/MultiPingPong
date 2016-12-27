@@ -33,12 +33,12 @@ function setup() {
     TRANSFER = new Transfer();
 
     // CONNECT TO SERVER
-    // LOCAL NETWORK
+    // LOCAL NETWORK MACBOOK
     // TRANSFER.connectToServer("http://192.168.0.105:1337");
-    // TRANSFER.connectToServer("http://192.168.0.140:1337");
-    
-    // LOCAL MACHINE
-    TRANSFER.connectToServer("https://pongmultiplayer.herokuapp.com/");
+    // HEROKU TEST
+    // TRANSFER.connectToServer("https://pongmultiplayer.herokuapp.com/");
+    // LOCALHOST
+    TRANSFER.connectToServer("http://localhost:1337");
 
     // FRAMERATE
     smooth();

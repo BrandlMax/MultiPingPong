@@ -13,7 +13,10 @@
 var express = require('express');
 
 var app = express();
+
+// LOCAL & HEROKU
 var server = app.listen(process.env.PORT || 1337);
+
 
 app.use(express.static('public'));
 
