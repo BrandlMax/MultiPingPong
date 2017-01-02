@@ -16,6 +16,10 @@ var PLAYERID = 0;
 // DISPLAY ELEMENTS
 var RoomInput;
 
+
+// TESTMODE
+var testmode = false;
+
 //
 // SETUP
 // 
@@ -156,6 +160,15 @@ function touchMoved() {
 }
 
 
+// ACTIVATE AUTOPILOT
+function keyPressed() {
+    // ACTIVATE AUTOPILOT WITH "T"
+    if (keyCode === 84) {
+        testmode = !testmode;
+    }
+}
+
+
 //
 // RENDER
 // 
@@ -176,7 +189,10 @@ function draw() {
 
 
     //AUTOPILOT
-    TRANSFER.autopilot();
+    if(testmode){
+        TRANSFER.autopilot();
+    }
+
 
     // PLAYER
     PLAYER1.player1();

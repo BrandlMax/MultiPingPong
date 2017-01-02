@@ -114,12 +114,12 @@ function Ball(){
 
         // QUICK & DIRTY
         // PLAYER
-        var paddleXArea1 = x >= (p1x-p1w/2) && x <= (p1x+p1w/2);
+        var paddleXArea1 = x >= (p1x - p1w/2) && x <= (p1x+p1w/2 + (-1*GAMEDATA.ball.speedX));
         var paddleYArea1 = y >= (p1y-p1h/2) && y <= (p1y+p1h/2);
 
-        var paddleXArea2 = x >= (p2x-p2w/2) && x <= (p2x+p2w/2);
+        var paddleXArea2 = x >= (p2x-p2w/2 - GAMEDATA.ball.speedX) && x <= (p2x+p2w/2);
         var paddleYArea2 = y >= (p2y-p2h/2) && y <= (p2y+p2h/2);
-      
+
 
         if(paddleXArea1 && paddleYArea1){
             if(y === p1y-p1h/2 || y === p1y+p1h/2){
