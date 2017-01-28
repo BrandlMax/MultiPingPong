@@ -20,10 +20,34 @@ var RoomInput;
 // TESTMODE
 var testmode = false;
 
+//CATMODE
+var catmode = false;
+var p1img;
+var p2img;
+var catpurr;
+var catmeow1;
+var catmeow2;
+var catlose;
+
 //
 // SETUP
-// 
+//
+
+function preload(){
+
+    // SOUNDS BY http://www.orangefreesounds.com/
+    catpurr = loadSound('sound/cat.mp3');
+    catmeow1 = loadSound('sound/meow1.wav');
+    catmeow2 = loadSound('sound/meow2.mp3');
+    catlose = loadSound('sound/lose.wav');
+}
+
 function setup() {
+    
+    // LOAD IMAGES & SOUND
+    p1img = loadImage("img/player1.png"); 
+    p2img = loadImage("img/player2.png"); 
+
 
     document.ontouchmove = function(event){
         event.preventDefault();
@@ -166,6 +190,21 @@ function keyPressed() {
     if (keyCode === 84) {
         testmode = !testmode;
     }
+
+    if (keyCode === 67) {
+        catmode = !catmode;
+
+        catpurr.setVolume(0.5);
+
+        if(catmode){
+            LEVEL.catmode();
+            //catpurr.play();
+            catpurr.loop();
+        }else{
+            LEVEL.nocatmode();
+            catpurr.stop();
+        }
+    }
 }
 
 
@@ -193,6 +232,14 @@ function draw() {
         TRANSFER.autopilot();
     }
 
+    //CATMODE
+    if(catmode){
+        if( GAMEDATA.ball.speedX > -10 && GAMEDATA.ball.speedX < 10){
+            this.body.style.backgroundImage  = "url(../img/universe1.jpg)";
+        }else{
+            this.body.style.backgroundImage  = "url(../img/bg.gif)";
+        }
+    }
 
     // PLAYER
     PLAYER1.player1();

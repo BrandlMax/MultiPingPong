@@ -15,8 +15,14 @@ function Player(count){
             y = 400-h/2;
         }
 
-        rectMode(CENTER);
-        rect(x,y,w,h);
+        if(catmode){
+            imageMode(CENTER);
+            var reso = p1img.height / h;
+            image(p1img, x, y, p1img.width / reso, p1img.height/reso);
+        } else{
+            rectMode(CENTER);
+            rect(x,y,w,h);
+        }
     }
 
     this.player2 = function(){
@@ -33,8 +39,14 @@ function Player(count){
             y = 400-h/2;
         }
 
-        rectMode(CENTER);
-        rect(x,y,w,h);
+        if(catmode){
+            imageMode(CENTER);
+            var reso = p1img.height / h;
+            image(p2img, x, y, p2img.width / reso, p2img.height/reso);
+        } else{
+            rectMode(CENTER);
+            rect(x,y,w,h);
+        }
     }
 
 }

@@ -3,7 +3,8 @@
 body{
     font-family: 'Montserrat', sans-serif;
     background: #ffffff;
-    color: ##232323;
+    color: #232323;
+    background-size: 125%;
 }
 
 #stage{
@@ -132,4 +133,12 @@ button {
 
 #WaitingOverlay h2{
     margin-bottom: 10px; 
+}
+
+
+/* CAT MODE */
+em {
+    color: #cb56be;
+    font-style: normal;
+    text-shadow: 2px 2px 30px rgb(202, 86, 189);
 }

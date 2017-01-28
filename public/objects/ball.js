@@ -10,9 +10,13 @@ function Ball(){
         var y = GAMEDATA.ball.y;
         var s = GAMEDATA.ball.size;
 
-
-        fill('#ffffff');
-        ellipse(x, y, s, s);
+        if(catmode){
+            fill('#ffffff');
+            ellipse(x, y, s, s);
+        }else{
+            fill('#ffffff');
+            ellipse(x, y, s, s);
+        }
 
     }
 
@@ -87,6 +91,10 @@ function Ball(){
             if(LEVEL.inGame){
             GAMEDATA.points2 = GAMEDATA.points2 + 1;
             }
+            if(catmode){
+                    catlose.play();
+            } 
+
         } else if(x >= LEVEL.width-s/2){
 
             GAMEDATA.ball.x = LEVEL.width-s/2;
@@ -102,6 +110,9 @@ function Ball(){
             if(LEVEL.inGame){
                 GAMEDATA.points1 = GAMEDATA.points1 + 1;
             }
+            if(catmode){
+                    catlose.play();
+            } 
             
         } else if(y <= 0+s/2){
             GAMEDATA.ball.y = 0+s/2;
@@ -125,19 +136,32 @@ function Ball(){
             if(y === p1y-p1h/2 || y === p1y+p1h/2){
                 this.speedUp();
                 horizontalCol();
+                if(catmode){
+                    catmeow1.play();
+                }
             }else{
                 this.speedUp();
                 verticalCol();
+                if(catmode){
+                    catmeow1.play();
+                }
             }
         }
 
         if(paddleXArea2 && paddleYArea2){
             if(y === p2y-p2h/2 || y === p2y+p2h/2){
                 this.speedUp();
+                if(catmode){
+                    catmeow2.play();
+                } 
                 horizontalCol();
+
             }else{
                 this.speedUp();
                 verticalCol();
+                if(catmode){
+                    catmeow2.play();
+                }
             }
         }
     }

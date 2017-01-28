@@ -5,6 +5,10 @@ function Level(){
     this.height = 400;
     this.inGame = false;
 
+    // MANIPULATION
+    this.body = document.getElementById("body");
+    this.title = document.getElementById("maintitle");
+
     this.createCanvas = function(){
         var canvas = createCanvas(this.width,this.height);
         canvas.parent('stage');
@@ -12,23 +16,40 @@ function Level(){
 
     this.arena = function(){
         noStroke();
-        background("#22AF97");
-        fill("#14A088");
-        rectMode(CORNER);
-        rect(width/2,0,width/2,height);
+
+        if(catmode){
+            background("#CB56BE");
+            fill("#B14BA6");
+            rectMode(CORNER);
+            rect(width/2,0,width/2,height);
+        }
+        else{
+            background("#22AF97");
+            fill("#14A088");
+            rectMode(CORNER);
+            rect(width/2,0,width/2,height);
+        }
     }
 
     this.score = function(){
 
         // PLAYER1
-        fill("#14A088");
+        if(catmode){
+            fill("#B14BA6");
+        } else{
+            fill("#14A088");
+        }
         textSize(150);
         textFont("Montserrat");
         textAlign(CENTER, CENTER);
         text(GAMEDATA.points1, 160, 200);
 
         // PLAYER2
-        fill("#22AF97");
+        if(catmode){
+            fill("#CB56BE");
+        } else{
+            fill("#22AF97");
+        }
         textSize(150);
         textFont("Montserrat");
         textAlign(CENTER, CENTER);
@@ -127,6 +148,16 @@ function Level(){
         } 
 
         this.checkWin();
+    }
+
+    this.nocatmode = function(){
+        this.title.innerHTML = "PING PONG˚";
+        this.body.style.backgroundImage  = "none";
+    }
+
+    this.catmode = function(){
+        this.title.innerHTML = "<em>Cat</em> Pong";
+         this.body.style.backgroundImage  = "url(../img/universe1.jpg)";
     }
 
     
