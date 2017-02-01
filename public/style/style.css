@@ -44,6 +44,7 @@ canvas#defaultCanvas0 {
     text-align: center;
     padding-left: 70px;
     padding-right: 70px;
+    z-index: 2000;
 }
 
 .hide{

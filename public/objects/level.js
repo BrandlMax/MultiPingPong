@@ -8,6 +8,7 @@ function Level(){
     // MANIPULATION
     this.body = document.getElementById("body");
     this.title = document.getElementById("maintitle");
+    this.canvas = document.getElementById("defaultCanvas0");
 
     this.createCanvas = function(){
         var canvas = createCanvas(this.width,this.height);
@@ -153,11 +154,13 @@ function Level(){
     this.nocatmode = function(){
         this.title.innerHTML = "PING PONG˚";
         this.body.style.backgroundImage  = "none";
+        this.canvas.style.opacity = "1";
     }
 
     this.catmode = function(){
         this.title.innerHTML = "<em>Cat</em> Pong";
-         this.body.style.backgroundImage  = "url(../img/universe1.jpg)";
+        this.body.style.backgroundImage  = "url(../img/universe1.jpg)";
+        this.canvas.style.opacity = "0.9";
     }
 
     
