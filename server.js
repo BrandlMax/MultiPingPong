@@ -9,6 +9,8 @@
 // io.sockets.to(socket.id).emit('Message', hellomsg);
 
 
+// JUST TEST COMMENT
+
 // SERVER
 var express = require('express');
 
@@ -23,7 +25,7 @@ app.use(express.static('public'));
 console.log("Server Up and Running");
 
 
-// SOCKET 
+// SOCKET
 var socket = require('socket.io');
 var io = socket(server);
 
@@ -44,7 +46,7 @@ function newConnection(socket){
     socket.on('room', function(room) {
 
         console.log(room);
-        
+
         // JOIN ROOM
         socket.join(room);
 
@@ -72,13 +74,13 @@ function newConnection(socket){
             io.sockets.in(room).emit('RoomSettings', RoomSettings);
 
         }
-        
+
         // SEND CONTROL MESSAGE
         var msg = "Entered Room: " + room + "With Players: " +  InsideRoom.length;
         io.sockets.in(room).emit('Message', msg);
 
 
-        // RUN FUNCTION ON LOST CONNECTION 
+        // RUN FUNCTION ON LOST CONNECTION
         socket.on('disconnect', function () {
             socket.leave(room);
 
@@ -89,7 +91,7 @@ function newConnection(socket){
         });
 
     });
-    
+
 
     // NEW USER
     console.log('newUser ' + socket.id);
@@ -104,8 +106,3 @@ function newConnection(socket){
     });
 
 }
-
-
-
-
-
